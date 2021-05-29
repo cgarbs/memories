@@ -5,6 +5,7 @@ class Memories extends Component {
         return (
             <div>
                 Memories will go here!
+                <p>(Memories will be pulled from database and displayed here as events/posts.)</p>
             </div>
         );
     }
