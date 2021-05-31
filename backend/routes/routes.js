@@ -135,20 +135,3 @@ function authorize(req, res, next) {
 
 
 module.exports = router
-
-
-
-// CODE SNIPPETS
-
-    // const { message } = req.body;
-    // console.log('****', req.body)
-    // Server.findById(req.params.id)
-    //     .then( currentServer => {
-    //         currentServer.messages.push(message)
-    //         currentServer.save().then((res) => {
-    //             res.json({ currentServer })
-    //             console.log('===>', res)
-    //         })
-    //         // console.log( '===>', currentServer )
-
-        // }).catch(console.error)
