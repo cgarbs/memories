@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const path = require('path')
 
+// .connect to 'mongodb://localhost/IronIverson' ???
+
 mongoose
     .connect(process.env.MONGODB_URI || 'mongodb://localhost/IronIverson', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(x => console.log(`Connected to ${x.connections[0].name}`))

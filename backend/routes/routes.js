@@ -3,9 +3,8 @@ const express = require('express');
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 
-const Message = require('../models/Message')
+const Memory = require('../models/Memory')
 const User = require('../models/User')
-const Server = require('../models/Server')
 
 
 router.get(`/`, (req, res) => {
@@ -14,53 +13,13 @@ router.get(`/`, (req, res) => {
     })
 })
 
-
-// SERVERS
-router.post(`/createServer`, authorize, (req, res) => {
-    Server.create({ title: req.body.title, admin: res.locals.user._id, users: res.locals.user._id }) //, messages: req.body.messages 
-        .then(server => {
-            res.json({ server })
-        }).catch(console.error)
-})
-
-router.get('/getServers', (req, res) => {
-    Server.find({}).then(allServersFromDb => {
-        res.json(allServersFromDb)
+// MEMORY LIST
+router.get('/getMemories', (req, res) => {
+    Memory.find({}).then(allMemoriesFromDb => {
+        res.json(allMemoriesFromDb)
     })
 })
 
-router.get('/server/:id', (req, res) => {
-    Server.findById(req.params.id)
-    .populate('users messages')
-    .populate({
-        path: 'messages',
-        populate: 'from'
-    })
-    .then(serverThread => {
-        res.json(serverThread)
-    })
-})
-
-router.post(`/server/:id/sendInput`, authorize, (req, res) => {
-    // console.log('^^^^^', req.body.data)
-    Message.create({ input: req.body.data, from: res.locals.user._id, date: new Date().toLocaleTimeString()})
-    .then(newMessage => {
-        Server.findById(req.params.id)
-        .then( res => {
-            res.messages.unshift(newMessage._id)
-            res.save()
-            // .then((res) =>
-            // res.json({ res }))
-        })
-    })
-    .catch(console.error)
-})
-
-router.get('/getMyServers', (req, res) => {
-    Server.find({ userId: res.locals.user._id }).then(allServersFromDb => {
-        res.json(allServersFromDb)
-    })
-})
 
 
 // USER LIST
@@ -68,23 +27,6 @@ router.get('/getUsers', (req, res) => {
     User.find({}).then(allUsersFromDb => {
         res.json(allUsersFromDb)
     })
-})
-
-
-
-// MESSAGES
-router.get('/getMessages', (req, res) => {
-    Message.find({}).then(allMessagesFromDb => {
-        res.json(allMessagesFromDb)
-    })
-})
-
-router.post(`/sendMessage`, authorize, (req, res) => {
-
-    Message.create({ input: req.body.message, from: res.locals.user._id, date: Date() })
-        .then(message => {
-            res.json({ message })
-        }).catch(console.error)
 })
 
 
