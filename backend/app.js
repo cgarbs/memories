@@ -12,6 +12,8 @@ mongoose
     .then(x => console.log(`Connected to ${x.connections[0].name}`))
     .catch(() => console.error("Error connecting to Mongo"))
 
+// cors to http and https for localhost:3000 and frontend domain
+
 app.use(cors({
     credentials: true,
     origin: ['http://localhost:3000', 'https://panda-chat.netlify.app', 'https://localhost:3000', 'http://panda-chat.netlify.app'] //Add client urls to allow CORS

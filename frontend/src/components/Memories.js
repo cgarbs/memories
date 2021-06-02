@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 
 class Memories extends Component {
+
+    state = {
+        memoriesList: []
+    }
+
+    getMemories = () => {
+        // pull memories from backend via api actions
+    }
+
     render() {
         return (
             <div>
