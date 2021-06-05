@@ -15,6 +15,7 @@ class App extends Component {
           <Route exact path="/" render={(props) => <Home {...props} />} />
           <Route exact path="/memories" render={(props) => <Memories {...props} />} />
         </Switch>
+        {/* View/Edit Memory page will not exist inside Switch (not rendered) */}
       </div>
     );
   }
