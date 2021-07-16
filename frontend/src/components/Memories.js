@@ -12,8 +12,10 @@ class Memories extends Component {
     }
 
     displayMemories = () => {
-        // memories will be displayed via the state in calendar or timeline format (on a date basis)
+        // memories will be displayed via the state in calendar or timeline format (on the basis of the assigned date)
         // must be display some visual element and link to view/edit the memory
+        // timeline will likely be displayed via CSS/bootstrap elements
+        // calendar may be displayed using an extension
         // link will direct to new page (not render)
     }
 
