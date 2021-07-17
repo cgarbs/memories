@@ -60,3 +60,5 @@ const actions = {
 };
 
 export default actions;
+
+// CONNECTION TO BACKEND, GOOGLE AUTHORIZATION, API ACTIONS USABLE IN FRONTEND...
